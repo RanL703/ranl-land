@@ -16,8 +16,11 @@ const firaCode = Fira_Code({
 });
 
 export const metadata: Metadata = {
-  title: "ranl - coding, streaming, and a passion project",
+  title: "ranl - coder, streamer and builder",
   description: "Personal site of ranl, a dev who streams while working on passion projects, sharing code, and ranting about tech.",
+  icons: {
+    icon: '/favicon.ico',
+  },
 };
 
 export default function RootLayout({
