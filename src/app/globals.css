@@ -1,0 +1,163 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Light mode theme with warm, creative colors */
+    --background: 36 100% 98%; /* Warm cream background */
+    --foreground: 210 20% 20%; /* Deep blue-gray text */
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+    --primary: 32 95% 44%; /* Rich amber for primary elements */
+    --primary-foreground: 0 0% 98%;
+    --secondary: 48 96% 89%; /* Soft yellow for secondary elements */
+    --secondary-foreground: 24 35% 25%;
+    --muted: 25 30% 94%; /* Muted beige */
+    --muted-foreground: 25 15% 35%;
+    --accent: 140 36% 55%; /* Minty green accents */
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 20 15% 85%;
+    --input: 20 15% 85%;
+    --ring: 32 95% 44%;
+    --radius: 0.5rem;
+    --chart-1: 12 76% 61%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+    
+    /* Custom personality variables */
+    --highlight: 32 95% 44%;
+    --highlight-foreground: 0 0% 100%;
+    --code-bg: 210 50% 96%;
+    --code-text: 220 50% 45%;
+    --link: 205 80% 45%;
+    --link-hover: 205 80% 35%;
+    --terminal-bg: 220 13% 18%;
+    --terminal-text: 120 100% 85%;
+  }
+
+  .dark {
+    /* Dark mode theme with cool, tech-focused colors */
+    --background: 250 25% 12%; /* Deep purple background (#120d22) */
+    --foreground: 210 40% 96%; /* Soft blue-white text */
+    --card: 224 31% 15%;
+    --card-foreground: 0 0% 98%;
+    --popover: 224 71% 4%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 262 83% 58%; /* Vibrant purple for primary elements */
+    --primary-foreground: 210 40% 98%;
+    --secondary: 217 33% 17%; /* Deep navy for secondary elements */
+    --secondary-foreground: 210 40% 98%;
+    --muted: 223 27% 27%; /* Muted blue-gray */
+    --muted-foreground: 215 20% 65%;
+    --accent: 199 89% 48%; /* Bright cyan accents */
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 217 33% 25%;
+    --input: 217 33% 25%;
+    --ring: 263 70% 50%;
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+    
+    /* Custom personality variables */
+    --highlight: 262 83% 58%;
+    --highlight-foreground: 0 0% 100%;
+    --code-bg: 225 30% 25%;
+    --code-text: 190 90% 80%;
+    --link: 199 89% 48%;
+    --link-hover: 199 89% 58%;
+    --terminal-bg: 220 13% 18%; 
+    --terminal-text: 120 100% 85%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground transition-colors duration-300;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-medium tracking-tight;
+  }
+  a {
+    @apply text-[hsl(var(--link))] hover:text-[hsl(var(--link-hover))] transition-colors;
+  }
+  pre, code {
+    @apply bg-[hsl(var(--code-bg))] text-[hsl(var(--code-text))] rounded px-1 font-mono;
+  }
+  
+  /* Scrollbar styling */
+  ::-webkit-scrollbar {
+    @apply w-2;
+  }
+  
+  ::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    @apply bg-muted rounded-full hover:bg-muted-foreground transition-colors;
+  }
+  
+  /* Fun blinking cursor effect for tech personality */
+  .cursor-blink::after {
+    content: "|";
+    @apply animate-pulse text-[hsl(var(--highlight))];
+  }
+  
+  /* Terminal-style text */
+  .terminal-text {
+    @apply font-mono text-[hsl(var(--terminal-text))] bg-[hsl(var(--terminal-bg))] p-4 rounded-md shadow-md;
+  }
+  
+  /* Code editor-inspired highlight */
+  .code-highlight {
+    @apply bg-[hsl(var(--highlight))] text-[hsl(var(--highlight-foreground))] px-1 py-0.5 rounded;
+  }
+}
+
+/* Fun animation for hover effects */
+@keyframes pulse-border {
+  0%, 100% {
+    border-color: hsl(var(--primary) / 0.5);
+  }
+  50% {
+    border-color: hsl(var(--primary) / 1);
+  }
+}
+
+.animate-border-pulse:hover {
+  animation: pulse-border 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Typing animation for terminal */
+.typing-animation {
+  animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+  border-right: 0.15em solid hsl(var(--accent));
+  overflow: hidden;
+  margin: 0 auto;
+  letter-spacing: 0.10em;
+  width: fit-content;
+}
+
+@keyframes typing {
+  from { width: 0 }
+  to { width: 24ch }
+}
+
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: hsl(var(--accent)); }
+}
