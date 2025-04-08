@@ -106,7 +106,7 @@ export default function Home() {
             </span>
           </a>
           <a
-            href="https://ranadeep-portfolio-rkbiwbo.gamma.site/"
+            href="https://ranadeeplaskar.vercel.app/"
             target="_blank"
             rel="noopener noreferrer"
             className="group relative w-full border border-border animate-border-pulse py-4 text-center transition-all duration-300 hover:bg-primary/10 dark:hover:bg-primary/20 rounded-md"
